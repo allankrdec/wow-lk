@@ -45,7 +45,30 @@ We have a lot of modules already made by the community, many of which can be fou
 
 ## Installation
 
-Detailed installation instructions are available [here](http://www.azerothcore.org/wiki/installation).
+## Linux: 
+MySQL ≥ 5.7.0
+Boost ≥ 1.74
+OpenSSL ≥ 1.0.x
+CMake ≥ 3.16
+Clang ≥ 10
+
+## Ubuntu with MariaDB 10.x
+sudo apt update && sudo apt full-upgrade -y && sudo apt install git cmake make gcc g++ clang libssl-dev libbz2-dev libreadline-dev libncurses-dev libboost-all-dev mariadb-server mariadb-client libmariadb-dev libmariadb-dev-compat
+## Ubuntu with MySQL 8.x
+sudo apt-get update && sudo apt-get install git cmake make gcc g++ clang libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev mysql-server libboost-all-dev
+
+## Debian 10
+sudo apt-get update && sudo apt-get install git cmake make gcc g++ clang default-libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev mariadb-server libboost-all-dev
+
+## Install
+cd <project-git>
+mkdir build
+cd build
+
+cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DCMAKE_CXX_FLAGS=-s -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
+
+make -j <ncores>
+make install
 
 ## Contributing
 
